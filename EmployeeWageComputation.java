@@ -2,70 +2,59 @@ package com.bridgelabz.day8_EmployeeWage;
 
 import java.util.Random;
 
-class Employee {
+public class EmployeeWageComputation {
     //constant
     static final int IS_FULL_TIME = 1;
     static final int IS_PART_TIME = 2;
-    static final int EMP_WAGE_PER_DAY = 20;
-    static final int WORKING_DAY_PER_MONTH = 20;
-    static final int TOTAL_WRK_HRS_MONTH = 100;
 
+    private final String company;
+    private final int empRatePerHour;
+    private final int numOfWorkingDays;
+    private final int maxHoursPerMonth;
 
-    //generating random number between 0 to 2 using random function
-    public static int empCheck() {
-        Random random = new Random();
-        int empCheck = random.nextInt(3);
-        return empCheck;
+ // constructer
+
+ public EmployeeWageComputation(String company, int empRatePerHour , int numOfWorkingDays , int maxHoursPerMonth)
+ {
+     super();
+     this.company = company;
+     this.empRatePerHour = empRatePerHour;
+     this.numOfWorkingDays = numOfWorkingDays;
+     this.maxHoursPerMonth = maxHoursPerMonth;
+ }
+
+ public static void totalEmpWage() {
+EmployeeWageComputation dMart = new EmployeeWageComputation("dmart", 20 , 20 , 100);
+ Random random = new Random();
+ int totalWorkingDays = 0 ;
+ int totalWorkingHours = 0 ;
+ int empWage = 0 ;
+ int totalEmpWage = 0;
+
+while (totalWorkingDays < dMart.numOfWorkingDays && totalWorkingHours < dMart.maxHoursPerMonth){
+    totalWorkingDays++;
+    int empCheck = random.nextInt(3);
+    int empHrs = 0;
+    switch( empCheck ){
+
+        case IS_PART_TIME -> empHrs = 4 ;
+        case IS_FULL_TIME -> empHrs = 8 ;
+        default -> empHrs = 0 ;
     }
-
-    //calculating employee works hour and salary
-    public static int empWrkHrs(int empCheck) {
-        int empWrkHrs;
-        switch (empCheck) {
-
-            case IS_FULL_TIME -> empWrkHrs = 8;
-            case IS_PART_TIME -> empWrkHrs = 4;
-            default -> empWrkHrs = 0;
-        }
-            return empWrkHrs;
-    }
-
-    //calculating employee wage per day
-    public static int empWage(int empWrkHrs){
-        int empWage = empWrkHrs * EMP_WAGE_PER_DAY;
-        return empWage;
+    totalWorkingHours = empHrs + totalWorkingHours ;
+    empWage = empHrs * dMart.empRatePerHour;
+    System.out.println("Day "+totalWorkingDays+ " = "+empWage );
+    totalEmpWage = empWage + totalEmpWage ;
 }
+     System.out.println("Salary of "+dMart.company+" employee is "+totalEmpWage);
+
+ }
 
 
-    //calculating total employee salary
-    public static int totalEmpSalary() {
-        int day = 0;
-        int totalEmpSalary = 0;
-        int empWrkHrs;
-        int empWage ;
-        int empCheck ;
-        int totalEmpWrkHrs =0;
-
-    while ( day < WORKING_DAY_PER_MONTH && totalEmpWrkHrs < TOTAL_WRK_HRS_MONTH ) {
-            empCheck = empCheck();
-            empWrkHrs = empWrkHrs(empCheck);
-            empWage = empWage(empWrkHrs);
-            totalEmpWrkHrs += empWrkHrs;
-            day++;
-            totalEmpSalary += empWage;
-
-        }
-        return totalEmpSalary;
-    }
-}
-public class EmployeeWageComputation {
     public static void main(String[] args) {
 
-        int totalEmpSalary;
-        totalEmpSalary = Employee.totalEmpSalary();
-        System.out.println("Total Employee salary : " + totalEmpSalary);
+     totalEmpWage();
     }
-
 }
 
 
