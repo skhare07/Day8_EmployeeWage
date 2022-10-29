@@ -6,7 +6,7 @@ class Employee {
     //constant
     static final int IS_FULL_TIME = 1;
     static final int IS_PART_TIME = 2;
-    static final int EMP_WAGE_PER_DAY = 20;
+    static final int EMP_WAGE_PER_HOUR = 20;
     static final int WORKING_DAY_PER_MONTH = 20;
     static final int TOTAL_WRK_HRS_MONTH = 100;
 
@@ -32,7 +32,7 @@ class Employee {
 
     //calculating employee wage per day
     public static int empWage(int empWrkHrs){
-        int empWage = empWrkHrs * EMP_WAGE_PER_DAY;
+        int empWage = empWrkHrs * EMP_WAGE_PER_HOUR;
         return empWage;
 }
 
