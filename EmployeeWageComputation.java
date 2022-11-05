@@ -14,9 +14,9 @@ public class EmployeeWageComputation {
 
  // constructer
 
+
  public EmployeeWageComputation(String company, int empRatePerHour , int numOfWorkingDays , int maxHoursPerMonth)
  {
-     super();
      this.company = company;
      this.empRatePerHour = empRatePerHour;
      this.numOfWorkingDays = numOfWorkingDays;
@@ -24,7 +24,9 @@ public class EmployeeWageComputation {
  }
 
  public static void totalEmpWage() {
-EmployeeWageComputation dMart = new EmployeeWageComputation("dmart", 20 , 20 , 100);
+
+     EmployeeWageComputation dMart = new EmployeeWageComputation("dmart", 20 , 20 , 100);
+
  Random random = new Random();
  int totalWorkingDays = 0 ;
  int totalWorkingHours = 0 ;
@@ -51,7 +53,7 @@ while (totalWorkingDays < dMart.numOfWorkingDays && totalWorkingHours < dMart.ma
  }
 
 
-    public static void main(String[] args) {
+public static void main(String[] args) {
 
      totalEmpWage();
     }
