@@ -53,6 +53,8 @@ class Employee {
             totalEmpWrkHrs += empWrkHrs;
             day++;
             totalEmpSalary += empWage;
+        System.out.println("Day :" +day+" Hours : "+empWrkHrs+ " Salary : "+empWage ); 
+     
 
         }
         return totalEmpSalary;
